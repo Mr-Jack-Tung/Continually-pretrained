@@ -8,3 +8,7 @@
 - Continual Pre-training of Language Models (https://arxiv.org/abs/2302.03241)
 - Adapting a Language Model While Preserving its General Knowledge (https://arxiv.org/abs/2301.08986)
 
+#### Github
+- https://github.com/UIC-Liu-Lab/ContinualLM
+
+
