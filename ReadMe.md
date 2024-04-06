@@ -15,5 +15,6 @@
 #### Github
 - https://github.com/UIC-Liu-Lab/ContinualLM
 - https://github.com/ZixuanKe/PyContinual
+- https://github.com/xyjigsaw/LLM-Pretrain-SFT
 
 
