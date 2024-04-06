@@ -1,5 +1,6 @@
 #### Blogs
 - Continued Pretraining with TinyLlama 1.1B (https://lightning.ai/lightning-ai/studios/continued-pretraining-with-tinyllama-1-1b)
+- Tips for LLM Pretraining and Evaluating Reward Models (https://magazine.sebastianraschka.com/p/tips-for-llm-pretraining-and-evaluating-rms)
 
 
 #### Models
@@ -7,6 +8,7 @@
 
 #### Papers
 - Simple and Scalable Strategies to Continually Pre-train Large Language Models (https://arxiv.org/abs/2403.08763)
+- RewardBench: Evaluating Reward Models for Language Modeling (https://arxiv.org/abs/2403.13787)
 - Aurora-M: The First Open Source Multilingual Language Model Red-teamed according to the U.S. Executive Order (https://arxiv.org/abs/2404.00399)
 - Continual Pre-Training of Large Language Models: How to (re)warm your model? (https://arxiv.org/abs/2308.04014)
 - Continual Pre-training of Language Models (https://arxiv.org/abs/2302.03241)
