@@ -17,6 +17,7 @@
 - Adapting BERT for Continual Learning of a Sequence of Aspect Sentiment Classification Tasks (https://arxiv.org/abs/2112.03271)
 - CLASSIC: Continual and Contrastive Learning of Aspect Sentiment Classification Tasks (https://arxiv.org/abs/2112.02714)
 - Achieving Forgetting Prevention and Knowledge Transfer in Continual Learning (https://arxiv.org/abs/2112.02706)
+- Don't Stop Pretraining: Adapt Language Models to Domains and Tasks (https://arxiv.org/abs/2004.10964)
 
 #### Github
 - https://github.com/UIC-Liu-Lab/ContinualLM
