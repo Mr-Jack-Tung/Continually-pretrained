@@ -32,8 +32,8 @@
 - **People:**
   - Quan Nguyen _ https://github.com/qnguyen3 ; https://www.linkedin.com/in/qnguyen3/ ; https://twitter.com/stablequan
   - Thien Huu Nguyen _ https://ix.cs.uoregon.edu/~thien/index.html
-  - Minh Nguyen (PhD, 2019-) _ https://minhhdvn.github.io
-  - Chien Nguyen (PhD, 2023-) _ https://chiennv2000.github.io ; https://twitter.com/chiennv2000
+  - Minh Nguyen _ https://minhhdvn.github.io
+  - Chien Nguyen _ https://chiennv2000.github.io ; https://twitter.com/chiennv2000
 
 #### News
 - Bỏ việc tại Mỹ, về làm trí tuệ nhân tạo miễn phí cho người Việt (https://thanhnien.vn/bo-viec-tai-my-ve-lam-tri-tue-nhan-tao-mien-phi-cho-nguoi-viet-185240121183106753.htm)
