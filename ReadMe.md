@@ -1,6 +1,7 @@
 ## Why Continual Pretrained?
 - Tại sao cần phải Continual Pretrained? ... đơn giản là chúng ta muốn kế thừa những thành quả mà model đã được huấn luyện rất tốt trước đó, và tiếp tục huấn luyện model này trên dữ liệu cá nhân của mình để cho ra kết quả chính xác hơn.
 - Tại sao không Pretrained từ đầu hoặc Fine-tuning? ... đơn giản vì Pretrained từ đầu sẽ rất tốn kém, chỉ riêng tiền thuê server huấn luyện có thể lên tới cả triệu đô với model lớn, còn nếu tiếp tục Fine-tuning thì model vẫn không hiểu được ngôn ngữ mới như tiếng Việt vì trước đây model chủ yếu được huấn luyện bằng tiếng Anh nên nó đã được học cái đó đâu, nên khi tokenizer làm việc thì sẽ phá hỏng toàn bộ những gì model đã học trước đó (T_T) "... Catastrophic forgetting (CF) is a phenomenon that occurs in machine learning when a model forgets previously learned information while acquiring new knowledge..." (https://arxiv.org/abs/2308.08747)
+- Vậy sau bước Continual Pre-Training thì làm gì tiếp theo? ... sau bước Continual Pre-Training thì lại tiếp tục Continual Fine-tuning with instructions thôi. Xong bước đó thì đời sẽ tươi đẹp rồi ^^
 
 #### Update 11 April 2024 - 11 AM
 - Update extend vocabsize with Chinese - Korean - Japanese ^^
