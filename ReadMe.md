@@ -3,7 +3,7 @@
 - Tại sao không Fine-tuning hoặc Pretrained từ đầu? đơn giản vì Pretrained từ đầu thì rất tốn kém, tiền thuê server huấn luyện có thể lên tới cả triệu đô với model lớn, còn nếu Fine-tuning thì model vẫn không hiểu được ngôn ngữ mới như tiếng Việt vì trước đây model nó đã được học cái đó đâu, nên khi tokenizer làm việc thì sẽ phá hỏng toàn bộ những gì model đã học trước đó (T_T)
 
 #### Update 11 April 2024:
-- Một trong những thách thức của việc Continual Pretrained đó chính là mở rộng Vocabsize. Vì khi dữ liệu mới được đưa vào để huấn luyện model sẽ gồm cả các tokens mới, mà các tokens này không có trong model trước đây. Điều này sẽ làm hỏng model đã được huấn luyện trước đó (T_T)
+- Một trong những thách thức của việc Continual Pretrained đó chính là mở rộng Vocabsize. Vì khi dữ liệu mới được đưa vào để huấn luyện model sẽ gồm cả các tokens mới, mà các tokens này không có trong model trước đây. Điều này sẽ làm hỏng toàn bộ những gì model đã được huấn luyện trước đó (T_T)
 - File name: example_extract_unicode_tokens_and_extend_vocabsize_send.py
 - Kết quả: Như bạn thấy trong file chương trình hoặc khi bạn chạy file example về extend vocabsize thì lúc ban đầu tokenizer không hiển thị đúng nội dung có chưa những tokens tiếng Việt mới được nhập vào, sau khi được extend vocabsize thì tokenizer đã có thể nhận diện và hiển thị đúng nội dung phù hợp với nội dung nhập vào là ngôn ngữ mới.
 
