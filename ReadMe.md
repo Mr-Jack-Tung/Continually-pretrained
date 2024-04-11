@@ -1,3 +1,6 @@
+#### Update 11 April 2024:
+- Một trong những thách thức của việc Continual Pretrained đó chính là mở rộng Vocabsize. Vì khi dữ liệu mới được đưa vào để huấn luyện model sẽ gồm cả các tokens mới, mà các tokens này không có trong model trước đây.
+
 #### Blogs
 - Continued Pretraining with TinyLlama 1.1B (https://lightning.ai/lightning-ai/studios/continued-pretraining-with-tinyllama-1-1b)
 - Tips for LLM Pretraining and Evaluating Reward Models (https://magazine.sebastianraschka.com/p/tips-for-llm-pretraining-and-evaluating-rms)
