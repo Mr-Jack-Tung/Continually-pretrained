@@ -17,6 +17,7 @@
 #### Blogs
 - Continued Pretraining with TinyLlama 1.1B (https://lightning.ai/lightning-ai/studios/continued-pretraining-with-tinyllama-1-1b)
 - Tips for LLM Pretraining and Evaluating Reward Models (https://magazine.sebastianraschka.com/p/tips-for-llm-pretraining-and-evaluating-rms)
+- Fine tune model – viết truyện phong cách Nam Cao (https://blog.ngxson.com/fine-tune-model-viet-truyen-phong-cach-nam-cao/)
 
 
 #### Models
