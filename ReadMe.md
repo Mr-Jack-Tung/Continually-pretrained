@@ -27,6 +27,7 @@
 
 #### News:
 - Bỏ việc tại Mỹ, về làm trí tuệ nhân tạo miễn phí cho người Việt (https://thanhnien.vn/bo-viec-tai-my-ve-lam-tri-tue-nhan-tao-mien-phi-cho-nguoi-viet-185240121183106753.htm)
+- Nhóm kỹ sư GenZ làm ứng dụng trí tuệ nhân tạo miễn phí cho người Việt (https://vnexpress.net/nhom-ky-su-genz-lam-ung-dung-tri-tue-nhan-tao-mien-phi-cho-nguoi-viet-4708838.html)
 
 #### Papers
 - Simple and Scalable Strategies to Continually Pre-train Large Language Models (https://arxiv.org/abs/2403.08763)
