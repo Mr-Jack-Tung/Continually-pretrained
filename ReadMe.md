@@ -27,6 +27,8 @@
   - Extend the tokenizer of Mistral 7B to better support Vietnamese.
   - Perform continual pre-training for Mistral over a diverse dataset of Vietnamese texts that are meticulously cleaned and deduplicated.
   - Perform supervised fine-tuning for the model using diverse instruction data. We design a set of instructions to align the model with the safety criteria in Vietnam.
+- Paper:
+  - CulturaX: A Cleaned, Enormous, and Multilingual Dataset for Large Language Models in 167 Languages (https://arxiv.org/abs/2309.09400)
 - **People:**
   - Quan Nguyen _ https://github.com/qnguyen3 ; https://www.linkedin.com/in/qnguyen3/ ; https://twitter.com/stablequan
   - Thien Huu Nguyen _ https://ix.cs.uoregon.edu/~thien/index.html
