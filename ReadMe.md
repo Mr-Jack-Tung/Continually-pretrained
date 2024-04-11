@@ -20,6 +20,7 @@
 
 #### Models
 - Vistral-7B-Chat - Towards a State-of-the-Art Large Language Model for Vietnamese (https://huggingface.co/Viet-Mistral/Vistral-7B-Chat)
+- Github: https://github.com/vilm-ai/llm-factory
 - **Model Description:** Vistral-7B-chat, a multi-turn conversational large language model for Vietnamese. Vistral is extended from the Mistral 7B model using diverse data for **continual pre-training** and **instruction tuning**. In particular, our process to develop Vistral involves:
   - Extend the tokenizer of Mistral 7B to better support Vietnamese.
   - Perform continual pre-training for Mistral over a diverse dataset of Vietnamese texts that are meticulously cleaned and deduplicated.
