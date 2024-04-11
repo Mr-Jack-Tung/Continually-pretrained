@@ -28,10 +28,10 @@
   - Perform continual pre-training for Mistral over a diverse dataset of Vietnamese texts that are meticulously cleaned and deduplicated.
   - Perform supervised fine-tuning for the model using diverse instruction data. We design a set of instructions to align the model with the safety criteria in Vietnam.
 - **People:**
-  - Quan Nguyen https://github.com/qnguyen3 ; https://www.linkedin.com/in/qnguyen3/ ; https://twitter.com/stablequan
-  - https://ix.cs.uoregon.edu/~thien/index.html
-  - Minh Nguyen (PhD, 2019-) https://minhhdvn.github.io
-  - Chien Nguyen (PhD, 2023-) https://chiennv2000.github.io
+  - Quan Nguyen _ https://github.com/qnguyen3 ; https://www.linkedin.com/in/qnguyen3/ ; https://twitter.com/stablequan
+  - Thien Huu Nguyen _ https://ix.cs.uoregon.edu/~thien/index.html
+  - Minh Nguyen (PhD, 2019-) _ https://minhhdvn.github.io
+  - Chien Nguyen (PhD, 2023-) _ https://chiennv2000.github.io
 
 #### News
 - Bỏ việc tại Mỹ, về làm trí tuệ nhân tạo miễn phí cho người Việt (https://thanhnien.vn/bo-viec-tai-my-ve-lam-tri-tue-nhan-tao-mien-phi-cho-nguoi-viet-185240121183106753.htm)
