@@ -25,6 +25,9 @@
   - Perform continual pre-training for Mistral over a diverse dataset of Vietnamese texts that are meticulously cleaned and deduplicated.
   - Perform supervised fine-tuning for the model using diverse instruction data. We design a set of instructions to align the model with the safety criteria in Vietnam.
 
+#### News:
+- Bỏ việc tại Mỹ, về làm trí tuệ nhân tạo miễn phí cho người Việt (https://thanhnien.vn/bo-viec-tai-my-ve-lam-tri-tue-nhan-tao-mien-phi-cho-nguoi-viet-185240121183106753.htm)
+
 #### Papers
 - Simple and Scalable Strategies to Continually Pre-train Large Language Models (https://arxiv.org/abs/2403.08763)
 - RewardBench: Evaluating Reward Models for Language Modeling (https://arxiv.org/abs/2403.13787)
