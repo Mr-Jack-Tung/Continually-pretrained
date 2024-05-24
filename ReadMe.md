@@ -3,6 +3,10 @@
 - Tại sao không Pretrained từ đầu hoặc Fine-tuning? ... đơn giản vì Pretrained từ đầu sẽ rất tốn kém, chỉ riêng tiền thuê server huấn luyện có thể lên tới cả triệu đô với model lớn, còn nếu tiếp tục Fine-tuning thì model vẫn không hiểu được ngôn ngữ mới như tiếng Việt vì trước đây model chủ yếu được huấn luyện bằng tiếng Anh nên nó đã được học cái đó đâu, nên khi tokenizer làm việc thì sẽ phá hỏng toàn bộ những gì model đã học trước đó (T_T) "... Catastrophic forgetting (CF) is a phenomenon that occurs in machine learning when a model forgets previously learned information while acquiring new knowledge..." (https://arxiv.org/abs/2308.08747)
 - Vậy sau bước Continual Pre-Training thì làm gì tiếp theo? ... sau bước Continual Pre-Training thì lại tiếp tục Continual Fine-tuning with instructions thôi. Xong bước đó thì đời sẽ tươi đẹp rồi ^^
 
+#### Update 24 May 2024 - 10 PM 45
+- An Easy-to-use, Scalable and High-performance RLHF Framework (Support 70B+ full tuning & LoRA & Mixtral & KTO) https://github.com/OpenLLMAI/OpenRLHF
+- https://github.com/OpenLLMAI/OpenRLHF/blob/main/examples/scripts/train_continue_pretrain_llama.sh
+
 #### Update 11 April 2024 - 11 AM
 - Update extend vocabsize with Chinese - Korean - Japanese ^^
   - "你好很高兴见到你"
