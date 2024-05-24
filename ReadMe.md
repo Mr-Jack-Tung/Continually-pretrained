@@ -4,8 +4,8 @@
 - Vậy sau bước Continual Pre-Training thì làm gì tiếp theo? ... sau bước Continual Pre-Training thì lại tiếp tục Continual Fine-tuning with instructions thôi. Xong bước đó thì đời sẽ tươi đẹp rồi ^^
 
 #### Update 24 May 2024 - 10 PM 45
-- An Easy-to-use, Scalable and High-performance RLHF Framework (Support 70B+ full tuning & LoRA & Mixtral & KTO) https://github.com/OpenLLMAI/OpenRLHF
-- https://github.com/OpenLLMAI/OpenRLHF/blob/main/examples/scripts/train_continue_pretrain_llama.sh
+- Tham khảo OpenRLHF: An Easy-to-use, Scalable and High-performance RLHF Framework (Support 70B+ full tuning & LoRA & Mixtral & KTO) https://github.com/OpenLLMAI/OpenRLHF
+- Continue pretrain: https://github.com/OpenLLMAI/OpenRLHF/blob/main/examples/scripts/train_continue_pretrain_llama.sh
 
 #### Update 11 April 2024 - 11 AM
 - Update extend vocabsize with Chinese - Korean - Japanese ^^
