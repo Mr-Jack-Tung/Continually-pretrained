@@ -13,8 +13,8 @@ In this Studio, we implement continued pretraining simply by loading the TinyLla
 
 - Forgetting: The model could "forget" some of the knowledge it has obtained from the initial pretraining
 - The performance in downstream tasks could become worse
-<br>
-**Prepare the dataset**<br>
+
+**Prepare the dataset** <br>
 TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics.<br><br>
 
 Step 1: Download the data into the Studio. The math dataset is ~52 GB
