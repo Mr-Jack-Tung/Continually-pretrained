@@ -14,7 +14,7 @@ In this Studio, we implement continued pretraining simply by loading the TinyLla
 - Forgetting: The model could "forget" some of the knowledge it has obtained from the initial pretraining
 - The performance in downstream tasks could become worse
 
-**Prepare the dataset** <br>
+**Prepare the dataset**<br>
 TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics.<br><br>
 
 Step 1: Download the data into the Studio. The math dataset is ~52 GB
@@ -57,9 +57,9 @@ litgpt pretrain --config configs/tinyllama-openwebmath.yaml --train.micro_batch_
 The training script periodically saves a checkpoint to the results folder, and at the end of training a checkpoint folder named final. <br><br>
 
 **Results**<br>
-After tuning the learning rate to the value mentioned earlier, the SlimPajama loss is increasing from 2.1 to 2.137 (a change in perplexity of 0.36), indicating a minor degradation but no catastrophic forgetting...<br><br>
+After tuning the learning rate to the value mentioned earlier, the SlimPajama loss is increasing from 2.1 to 2.137 (a change in perplexity of 0.36), indicating a minor degradation but no catastrophic forgetting...<br>
 
-We see that in most tasks the metrics improved slightly, and only HellaSwag and Piqa dropped 2 points. To evaluate the effect of continued training on a math domain dataset, we also ran on the MathQA showing a slight increase in accuracy.<br><br>
+We see that in most tasks the metrics improved slightly, and only HellaSwag and Piqa dropped 2 points. To evaluate the effect of continued training on a math domain dataset, we also ran on the MathQA showing a slight increase in accuracy.<br>
 
 Note that after pretraining, the model can only do next-token prediction, i.e., completing the sentence we give as the input prompt. To make it into chat model / assistant and evaluate it properly, we would have to do additional instruction finetuning and potentially further alignment but we omitted this in the interest of keeping the tutorial brief.<br><br>
 
