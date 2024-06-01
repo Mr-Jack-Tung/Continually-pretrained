@@ -3,19 +3,19 @@
 - Tại sao không Pretrained từ đầu hoặc Fine-tuning? ... đơn giản vì Pretrained từ đầu sẽ rất tốn kém, chỉ riêng tiền thuê server huấn luyện có thể lên tới cả triệu đô với model lớn, còn nếu tiếp tục Fine-tuning thì model vẫn không hiểu được ngôn ngữ mới như tiếng Việt vì trước đây model chủ yếu được huấn luyện bằng tiếng Anh nên nó đã được học cái đó đâu, nên khi tokenizer làm việc thì sẽ phá hỏng toàn bộ những gì model đã học trước đó (T_T) "... Catastrophic forgetting (CF) is a phenomenon that occurs in machine learning when a model forgets previously learned information while acquiring new knowledge..." (https://arxiv.org/abs/2308.08747)
 - Vậy sau bước Continual Pre-Training thì làm gì tiếp theo? ... sau bước Continual Pre-Training thì lại tiếp tục Continual Fine-tuning with instructions thôi. Xong bước đó thì đời sẽ tươi đẹp rồi ^^
 
-#### Continued Pretraining with TinyLlama 1.1B (summary)<br>
+#### (01 Jun 2024) Review: Continued Pretraining with TinyLlama 1.1B (summary)<br>
 - https://lightning.ai/lightning-ai/studios/pretrain-llms-tinyllama-1-1b
-- https://lightning.ai/lightning-ai/studios/continued-pretraining-with-tinyllama-1-1b)
+- https://lightning.ai/lightning-ai/studios/continued-pretraining-with-tinyllama-1-1b
 
-Continued pretraining is the process of continuing to update a pretrained model using new data. Take for example an LLM that is trained on news articles: There is a knowledge cutoff at the date the data for training was collected. One could add all new articles to the dataset and retrain the model from scratch, but this is very expensive. Instead, continued pretraining allows us to continue training on the recent data without discarding the previously acquired knowledge.<br>
+Continued pretraining is the process of continuing to update a pretrained model using new data. Take for example an LLM that is trained on news articles: There is a knowledge cutoff at the date the data for training was collected. One could add all new articles to the dataset and retrain the model from scratch, but this is very expensive. Instead, continued pretraining allows us to continue training on the recent data without discarding the previously acquired knowledge.<br><br>
 
 In this Studio, we implement continued pretraining simply by loading the TinyLlama checkpoint and training on a new dataset and warming up the learning rate during the first few iterations. But in general there are some challenges involved:<br>
 
 - Forgetting: The model could "forget" some of the knowledge it has obtained from the initial pretraining
 - The performance in downstream tasks could become worse
 
-**Prepare the dataset**
-TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics. 
+**Prepare the dataset**<br>
+TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics.<br>
 
 Step 1: Download the data into the Studio. The math dataset is ~52 GB
 ```
@@ -24,16 +24,16 @@ git clone https://huggingface.co/datasets/open-web-math/open-web-math  dataset/r
 
 Step 2: Preprocess the dataset. Before we can consume the data in our training script, we need to tokenize it. In addition, we will use Lightning Data to optimize the dataset by creating chunks that are efficient to load...  In this case, the dataset is saved as Parquet files, and we simply tokenize the text samples with the same tokenizer that was used for training TinyLlama.
 
-**Warm up**
+**Warm up**<br>
 we choose the fraction of warmup steps to be 1% of the training data size (~1.4K tokens), which is generally considered a good default... For the initial pretraining, TinyLlama used a minimum learning rate of 4e-5 and a maximum learning rate of 4e-4. For our experiment with OpenWebMath, we found that reducing them to 5% of the original value worked reasonably well and was enough to suppress catastrophic forgetting. (min= 0.1 x 4e-5 ; max= 0.05 x 4e-4)
 
-**Start the training**
- You must be at least on a A10G GPU machine.
+**Start the training**<br>
+ You must be at least on a A10G GPU machine.<br>
  ```
 litgpt pretrain --config configs/tinyllama-openwebmath.yaml --train.max_seq_length 64 --train.micro_batch_size 1
 ```
 
-This will run with a reduced context size and batch size 1 to fit in memory... Let's take a quick look at the config file in configs/tinyllama-openwebmath.yaml. Here is an excerpt with the most important settings.
+This will run with a reduced context size and batch size 1 to fit in memory... Let's take a quick look at the config file in configs/tinyllama-openwebmath.yaml. Here is an excerpt with the most important settings.<br>
 ```
 train:
   global_batch_size: 512
@@ -44,7 +44,7 @@ train:
   min_lr: 0.000004
 ```
 
-On a single A10G GPU, the training will take a few days, and using the full context size of 2048 tokens won't fit in the memory of an A10G. To reduce the training time down to a few hours with full context size, either switch to an A100 or H100 Studio machine, or use the Multi-Machine Training app ... 
+On a single A10G GPU, the training will take a few days, and using the full context size of 2048 tokens won't fit in the memory of an A10G. To reduce the training time down to a few hours with full context size, either switch to an A100 or H100 Studio machine, or use the Multi-Machine Training app ... <br>
 
 ```
 litgpt pretrain --config configs/tinyllama-openwebmath.yaml
@@ -56,16 +56,16 @@ litgpt pretrain --config configs/tinyllama-openwebmath.yaml --train.micro_batch_
 
 The training script periodically saves a checkpoint to the results folder, and at the end of training a checkpoint folder named final. 
 
-**Results**
+**Results**<br>
 ...After tuning the learning rate to the value mentioned earlier, the SlimPajama loss is increasing from 2.1 to 2.137 (a change in perplexity of 0.36), indicating a minor degradation but no catastrophic forgetting...
 
 We see that in most tasks the metrics improved slightly, and only HellaSwag and Piqa dropped 2 points. To evaluate the effect of continued training on a math domain dataset, we also ran on the MathQA showing a slight increase in accuracy.
 Note that after pretraining, the model can only do next-token prediction, i.e., completing the sentence we give as the input prompt. To make it into chat model / assistant and evaluate it properly, we would have to do additional instruction finetuning and potentially further alignment but we omitted this in the interest of keeping the tutorial brief.
 
-**Conclusion**
+**Conclusion**<br>
 Continued pretraining is a cost effective method to incorporate new knowledge into a pretrained LLM without having to retrain it from scratch. Using warmup and a smart choice of learning rate schedule, we can minimize the risk that the model forgets the original data. When we did the experiments with TinyLlama and OpenWebMath in this tutorial, we saw small amount of forgetting happening when plotting the loss/perplexity over the SlimPajama dataset during training. Despite this, performance across tasks has improved by a small amount. On the other hand, a more thorough analysis of how well the model has adopted the new domain is still needed. If you are planning to train on your own data, consider creating a benchmark ahead of time based on your requirements. Finally, since we didn't include a thorough analysis on the hyperparameters, it is possible that better numbers can be achieved with an increased learning rate or different warmup schedule.
 
-**References**
+**References**<br>
 - K. Paster, M. Dos Santos, Z. Azerbayev, J. Ba, OpenWebMath: An Open Dataset of High-Quality Mathematical Web Text, ArXiv, 2023
 - P. Zhang, G. Zeng, T. Wang, W. Lu, TinyLlama: An Open-Source Small Language Model, ArXiv, 2024
 - K. Gupta, B. Thérien, A. Ibrahim, M. Richter et al., Continual Pre-Training of Large Language Models: How to re-warm your model?, ICML, 2023
