@@ -13,19 +13,19 @@ In this Studio, we implement continued pretraining simply by loading the TinyLla
 
 - Forgetting: The model could "forget" some of the knowledge it has obtained from the initial pretraining
 - The performance in downstream tasks could become worse
-
+<br>
 **Prepare the dataset**<br>
-TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics.<br>
+TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics.<br><br>
 
 Step 1: Download the data into the Studio. The math dataset is ~52 GB
 ```
 git clone https://huggingface.co/datasets/open-web-math/open-web-math  dataset/raw/open-web-math
 ```
 
-Step 2: Preprocess the dataset. Before we can consume the data in our training script, we need to tokenize it. In addition, we will use Lightning Data to optimize the dataset by creating chunks that are efficient to load...  In this case, the dataset is saved as Parquet files, and we simply tokenize the text samples with the same tokenizer that was used for training TinyLlama.
+Step 2: Preprocess the dataset. Before we can consume the data in our training script, we need to tokenize it. In addition, we will use Lightning Data to optimize the dataset by creating chunks that are efficient to load...  In this case, the dataset is saved as Parquet files, and we simply tokenize the text samples with the same tokenizer that was used for training TinyLlama.<br><br>
 
 **Warm up**<br>
-we choose the fraction of warmup steps to be 1% of the training data size (~1.4K tokens), which is generally considered a good default... For the initial pretraining, TinyLlama used a minimum learning rate of 4e-5 and a maximum learning rate of 4e-4. For our experiment with OpenWebMath, we found that reducing them to 5% of the original value worked reasonably well and was enough to suppress catastrophic forgetting. (min= 0.1 x 4e-5 ; max= 0.05 x 4e-4)
+we choose the fraction of warmup steps to be 1% of the training data size (~1.4K tokens), which is generally considered a good default... For the initial pretraining, TinyLlama used a minimum learning rate of 4e-5 and a maximum learning rate of 4e-4. For our experiment with OpenWebMath, we found that reducing them to 5% of the original value worked reasonably well and was enough to suppress catastrophic forgetting. (min= 0.1 x 4e-5 ; max= 0.05 x 4e-4)<br><br>
 
 **Start the training**<br>
  You must be at least on a A10G GPU machine.<br>
@@ -54,16 +54,17 @@ litgpt pretrain --config configs/tinyllama-openwebmath.yaml
 litgpt pretrain --config configs/tinyllama-openwebmath.yaml --train.micro_batch_size 8
 ```
 
-The training script periodically saves a checkpoint to the results folder, and at the end of training a checkpoint folder named final. 
+The training script periodically saves a checkpoint to the results folder, and at the end of training a checkpoint folder named final. <br><br>
 
 **Results**<br>
-...After tuning the learning rate to the value mentioned earlier, the SlimPajama loss is increasing from 2.1 to 2.137 (a change in perplexity of 0.36), indicating a minor degradation but no catastrophic forgetting...
+After tuning the learning rate to the value mentioned earlier, the SlimPajama loss is increasing from 2.1 to 2.137 (a change in perplexity of 0.36), indicating a minor degradation but no catastrophic forgetting...<br><br>
 
-We see that in most tasks the metrics improved slightly, and only HellaSwag and Piqa dropped 2 points. To evaluate the effect of continued training on a math domain dataset, we also ran on the MathQA showing a slight increase in accuracy.
-Note that after pretraining, the model can only do next-token prediction, i.e., completing the sentence we give as the input prompt. To make it into chat model / assistant and evaluate it properly, we would have to do additional instruction finetuning and potentially further alignment but we omitted this in the interest of keeping the tutorial brief.
+We see that in most tasks the metrics improved slightly, and only HellaSwag and Piqa dropped 2 points. To evaluate the effect of continued training on a math domain dataset, we also ran on the MathQA showing a slight increase in accuracy.<br><br>
+
+Note that after pretraining, the model can only do next-token prediction, i.e., completing the sentence we give as the input prompt. To make it into chat model / assistant and evaluate it properly, we would have to do additional instruction finetuning and potentially further alignment but we omitted this in the interest of keeping the tutorial brief.<br><br>
 
 **Conclusion**<br>
-Continued pretraining is a cost effective method to incorporate new knowledge into a pretrained LLM without having to retrain it from scratch. Using warmup and a smart choice of learning rate schedule, we can minimize the risk that the model forgets the original data. When we did the experiments with TinyLlama and OpenWebMath in this tutorial, we saw small amount of forgetting happening when plotting the loss/perplexity over the SlimPajama dataset during training. Despite this, performance across tasks has improved by a small amount. On the other hand, a more thorough analysis of how well the model has adopted the new domain is still needed. If you are planning to train on your own data, consider creating a benchmark ahead of time based on your requirements. Finally, since we didn't include a thorough analysis on the hyperparameters, it is possible that better numbers can be achieved with an increased learning rate or different warmup schedule.
+Continued pretraining is a cost effective method to incorporate new knowledge into a pretrained LLM without having to retrain it from scratch. Using warmup and a smart choice of learning rate schedule, we can minimize the risk that the model forgets the original data. When we did the experiments with TinyLlama and OpenWebMath in this tutorial, we saw small amount of forgetting happening when plotting the loss/perplexity over the SlimPajama dataset during training. Despite this, performance across tasks has improved by a small amount. On the other hand, a more thorough analysis of how well the model has adopted the new domain is still needed. If you are planning to train on your own data, consider creating a benchmark ahead of time based on your requirements. Finally, since we didn't include a thorough analysis on the hyperparameters, it is possible that better numbers can be achieved with an increased learning rate or different warmup schedule.<br><br>
 
 **References**<br>
 - K. Paster, M. Dos Santos, Z. Azerbayev, J. Ba, OpenWebMath: An Open Dataset of High-Quality Mathematical Web Text, ArXiv, 2023
