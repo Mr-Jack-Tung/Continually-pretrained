@@ -7,7 +7,7 @@
 - https://lightning.ai/lightning-ai/studios/pretrain-llms-tinyllama-1-1b
 - https://lightning.ai/lightning-ai/studios/continued-pretraining-with-tinyllama-1-1b
 
-Continued pretraining is the process of continuing to update a pretrained model using new data. Take for example an LLM that is trained on news articles: There is a knowledge cutoff at the date the data for training was collected. One could add all new articles to the dataset and retrain the model from scratch, but this is very expensive. Instead, continued pretraining allows us to continue training on the recent data without discarding the previously acquired knowledge.<br><br>
+Continued pretraining is the process of continuing to update a pretrained model using new data. Take for example an LLM that is trained on news articles: There is a knowledge cutoff at the date the data for training was collected. One could add all new articles to the dataset and retrain the model from scratch, but this is very expensive. Instead, continued pretraining allows us to continue training on the recent data without discarding the previously acquired knowledge.<br>
 
 In this Studio, we implement continued pretraining simply by loading the TinyLlama checkpoint and training on a new dataset and warming up the learning rate during the first few iterations. But in general there are some challenges involved:<br>
 
@@ -15,7 +15,7 @@ In this Studio, we implement continued pretraining simply by loading the TinyLla
 - The performance in downstream tasks could become worse
 <br>
 **Prepare the dataset**<br>
-TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics.<br><br>
+TinyLlama was initially trained on 3 trillion tokens from a mix of SlimPajama and Starcoder data. In this tutorial, we choose to continue training on the OpenWebMath dataset to improve its skills in the domain of mathematics.<br>
 
 Step 1: Download the data into the Studio. The math dataset is ~52 GB
 ```
