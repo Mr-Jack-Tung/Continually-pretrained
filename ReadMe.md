@@ -59,6 +59,8 @@ The training script periodically saves a checkpoint to the results folder, and a
 **Results**<br>
 After tuning the learning rate to the value mentioned earlier, the SlimPajama loss is increasing from 2.1 to 2.137 (a change in perplexity of 0.36), indicating a minor degradation but no catastrophic forgetting...<br>
 
+![alt text](https://github.com/Mr-Jack-Tung/Continually-pretrained/blob/main/Screenshot%202024-06-01.png)
+
 We see that in most tasks the metrics improved slightly, and only HellaSwag and Piqa dropped 2 points. To evaluate the effect of continued training on a math domain dataset, we also ran on the MathQA showing a slight increase in accuracy.<br>
 
 Note that after pretraining, the model can only do next-token prediction, i.e., completing the sentence we give as the input prompt. To make it into chat model / assistant and evaluate it properly, we would have to do additional instruction finetuning and potentially further alignment but we omitted this in the interest of keeping the tutorial brief.<br><br>
