@@ -6,6 +6,7 @@
 #### (01 Jun 2024) Review: Continued Pretraining with TinyLlama 1.1B (summary)<br>
 - https://lightning.ai/lightning-ai/studios/pretrain-llms-tinyllama-1-1b
 - https://lightning.ai/lightning-ai/studios/continued-pretraining-with-tinyllama-1-1b
+- https://lightning.ai/lightning-ai/studios/instruction-finetuning-tinyllama-1-1b-llm
 
 Continued pretraining is the process of continuing to update a pretrained model using new data. Take for example an LLM that is trained on news articles: There is a knowledge cutoff at the date the data for training was collected. One could add all new articles to the dataset and retrain the model from scratch, but this is very expensive. Instead, continued pretraining allows us to continue training on the recent data without discarding the previously acquired knowledge.<br>
 
